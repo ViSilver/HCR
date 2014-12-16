@@ -1,0 +1,114 @@
+<head>
+    <title>Create Appointment</title>
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static "HCR/css/bootstrap.min.css" %}" />
+    <link rel="stylesheet" href="{% static "HCR/css/style.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "HCR/css/datepicker.css" %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="{% static "HCR/js/bootstrap-datepicker.js" %}"></script>
+</head>
+
+<!-- Serch form -->
+<form id="find" class="navbar-form navbar-right" role="search">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search appointment">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+              <!-- Single button -->
+<nav>
+    <a href="/HCR">Health Care Registration</a> /
+    <a href="/HCR">Home</a>
+</nav>
+
+
+<div class="cover">
+  <div class="layer">
+    <hgroup>
+      <div id="h1_app"><h1 >Create appointment</h1></div>
+      <div id="h2_app"><h2 id="h2_cover">Health Care Registration</h2></div>
+    </hgroup>
+  </div>
+</div>
+
+<div class="options-wrapper"  >
+    <a class="tile" id="profile" href="/HCR/patients/profile">
+        <span class="tile-icon"> <img src="{% static "HCR/img/profile.png" %}"></span>
+        <span class="tile-title">My profile</span>
+    </a>
+      
+    <a class="tile" id="doctors" href="/HCR/doctors/">
+        <span class="tile-icon"><img src="{% static "HCR/img/doctor.png" %}"></span>
+        <span class="tile-title">Our doctors</span>
+    </a>
+      
+    <a class="tile" id="appointment" href="/HCR/app">
+        <span class="tile-icon"><img src="{% static "HCR/img/appointment.png" %}"></span>
+        <span class="tile-title">Create appointment</span>
+    </a>
+      
+    <a class="tile" id="contact" href="/HCR/contacts/">
+        <span class="tile-icon"><img src="{% static "HCR/img/contact.png" %}"></span>
+        <span class="tile-title">Contact</span>
+    </a>
+</div>
+
+<div class="content_input">
+<!-- Specialization -->
+<div id="Specialization"class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+    Specialization
+    <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    	<li role="presentation" class="dropdown-header">{{ specialization.title }}</li>
+    </ul>
+</div>
+
+<!-- Name_of_Specialization -->
+<div id="Name_of_specialization"class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+    Doctors
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation" class="dropdown-header">{{ doctor.name}}</li>
+    {% for doctor in doctors %}
+    <li><a href="{% url 'create_appointment_2' specialization.id doctor.id %}">{{ doctor.name }}</a></li>
+{% endfor %}
+  </ul>
+</div>
+
+
+<!-- Specialization_Name_of_Specialization -->
+<div id="Specialization_Name_of_Specialization"class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+    Date
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation" class="dropdown-header">{{ specialization.title }}</li>
+    <li role="presentation" class="dropdown-header">{{ doctor.name}}</li>
+{% for day in doc_free_days %}
+    <li><a href="{% url 'create_appointment_to_submit' specialization.id doctor.id year month day %}">{{ year }}/{{month}}/{{day}}</a></li>
+{% endfor %}
+  </ul>
+</div>
+</div>
+        
+<!-- <form id="date" action="index.html" method="post">
+    <label for="your_name">Pick your date </label>
+    <div class="input-append date" id="datepicker" data-date="10-12-2014" data-date-format="dd-mm-yyyy">
+                <input size="16" type="text" value="10-12-2014">
+                <span class="add-on"><i class="icon-th"></i></span>
+    </div>
+    <input type="submit" value="OK">
+</form>
+<script type="text/javascript">  $('#datepicker').datepicker();</script>
+ -->
+</body>

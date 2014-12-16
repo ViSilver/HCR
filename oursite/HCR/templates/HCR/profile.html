@@ -1,0 +1,62 @@
+<head>
+    <title>My profile</title>
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static "HCR/css/bootstrap.min.css" %}" />
+    <link rel="stylesheet" href="{% static "HCR/css/style.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "HCR/css/datepicker.css" %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="{% static "HCR/js/bootstrap-datepicker.js" %}"></script>
+</head>
+
+
+<!-- Serch form -->
+<form id="find" class="navbar-form navbar-right" role="search">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search appointment">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+             <!-- Single button -->
+<nav>
+    <a href="/HCR">Health Care Registration</a> /
+    <a href="/HCR">Home</a>
+</nav>
+
+
+<div class="cover">
+  <div class="layer">
+    <hgroup>
+      <div id="h1_all"><h1>My profile</h1></div>
+      <div id="h2_all"><h2>Under construction</h2></div>
+    </hgroup>
+  </div>
+</div>
+
+
+<div class="options-wrapper"  >
+    <a class="tile" id="profile" href="/HCR/patients/profile">
+        <span class="tile-icon"> <img src="{% static "HCR/img/profile.png" %}"></span>
+        <span class="tile-title">My profile</span>
+    </a>
+      
+    <a class="tile" id="doctors" href="/HCR/doctors/">
+        <span class="tile-icon"><img src="{% static "HCR/img/doctor.png" %}"></span>
+        <span class="tile-title">Our doctors</span>
+    </a>
+      
+    <a class="tile" id="appointment" href="/HCR/app">
+        <span class="tile-icon"><img src="{% static "HCR/img/appointment.png" %}"></span>
+        <span class="tile-title">Create appointment</span>
+    </a>
+      
+    <a class="tile" id="contact" href="/HCR/contacts/">
+        <span class="tile-icon"><img src="{% static "HCR/img/contact.png" %}"></span>
+        <span class="tile-title">Contact</span>
+    </a>
+</div>
+</html>
